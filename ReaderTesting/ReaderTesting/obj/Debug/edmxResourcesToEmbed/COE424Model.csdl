@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="COE424Model1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Bus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="LineId" Type="Int32" Nullable="false" />
+    <Property Name="TagId" Type="String" Nullable="false" />
+    <NavigationProperty Name="Line" Relationship="Self.FK_Bus_Line" FromRole="Bus" ToRole="Line" />
+    <NavigationProperty Name="Schedules" Relationship="Self.FK_Schedule_Bus" FromRole="Bus" ToRole="Schedule" />
+  </EntityType>
+  <EntityType Name="Line">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Buses" Relationship="Self.FK_Bus_Line" FromRole="Line" ToRole="Bus" />
+    <NavigationProperty Name="Paths" Relationship="Self.FK_Path_Line" FromRole="Line" ToRole="Path" />
+  </EntityType>
+  <EntityType Name="Station">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="ReaderId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Path">
+    <Key>
+      <PropertyRef Name="LineId" />
+      <PropertyRef Name="CurrentStation" />
+      <PropertyRef Name="NextStation" />
+      <PropertyRef Name="ETA" />
+    </Key>
+    <Property Name="LineId" Type="Int32" Nullable="false" />
+    <Property Name="CurrentStation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NextStation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ETA" Type="Time" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Line" Relationship="Self.FK_Path_Line" FromRole="Path" ToRole="Line" />
+  </EntityType>
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="BusId" />
+      <PropertyRef Name="CurrentStation" />
+      <PropertyRef Name="NextStation" />
+      <PropertyRef Name="ETA" />
+      <PropertyRef Name="CheckIn" />
+    </Key>
+    <Property Name="BusId" Type="Int32" Nullable="false" />
+    <Property Name="CurrentStation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NextStation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ETA" Type="Time" Nullable="false" Precision="0" />
+    <Property Name="CheckIn" Type="Time" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Bus" Relationship="Self.FK_Schedule_Bus" FromRole="Schedule" ToRole="Bus" />
+  </EntityType>
+  <Association Name="FK_Bus_Line">
+    <End Role="Line" Type="Self.Line" Multiplicity="1" />
+    <End Role="Bus" Type="Self.Bus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Line">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bus">
+        <PropertyRef Name="LineId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schedule_Bus">
+    <End Role="Bus" Type="Self.Bus" Multiplicity="1" />
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schedule">
+        <PropertyRef Name="BusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Path_Line">
+    <End Role="Line" Type="Self.Line" Multiplicity="1" />
+    <End Role="Path" Type="Self.Path" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Line">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Path">
+        <PropertyRef Name="LineId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="COE424Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Buses" EntityType="Self.Bus" />
+    <EntitySet Name="Lines" EntityType="Self.Line" />
+    <EntitySet Name="Stations" EntityType="Self.Station" />
+    <EntitySet Name="Paths" EntityType="Self.Path" />
+    <EntitySet Name="Schedules" EntityType="Self.Schedule" />
+    <AssociationSet Name="FK_Bus_Line" Association="Self.FK_Bus_Line">
+      <End Role="Line" EntitySet="Lines" />
+      <End Role="Bus" EntitySet="Buses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schedule_Bus" Association="Self.FK_Schedule_Bus">
+      <End Role="Bus" EntitySet="Buses" />
+      <End Role="Schedule" EntitySet="Schedules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Path_Line" Association="Self.FK_Path_Line">
+      <End Role="Line" EntitySet="Lines" />
+      <End Role="Path" EntitySet="Paths" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

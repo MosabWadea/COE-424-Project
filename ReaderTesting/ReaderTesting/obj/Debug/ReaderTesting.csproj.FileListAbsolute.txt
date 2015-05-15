@@ -1,0 +1,19 @@
+c:\users\mr.x\documents\visual studio 2013\Projects\ReaderTesting\ReaderTesting\bin\Debug\ReaderTesting.exe.config
+c:\users\mr.x\documents\visual studio 2013\Projects\ReaderTesting\ReaderTesting\bin\Debug\ReaderTesting.exe
+c:\users\mr.x\documents\visual studio 2013\Projects\ReaderTesting\ReaderTesting\bin\Debug\ReaderTesting.pdb
+c:\users\mr.x\documents\visual studio 2013\Projects\ReaderTesting\ReaderTesting\bin\Debug\EntityFramework.dll
+c:\users\mr.x\documents\visual studio 2013\Projects\ReaderTesting\ReaderTesting\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\mr.x\documents\visual studio 2013\Projects\ReaderTesting\ReaderTesting\bin\Debug\EntityFramework.xml
+c:\users\mr.x\documents\visual studio 2013\Projects\ReaderTesting\ReaderTesting\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\mr.x\documents\visual studio 2013\Projects\ReaderTesting\ReaderTesting\obj\Debug\ReaderTesting.exe
+c:\users\mr.x\documents\visual studio 2013\Projects\ReaderTesting\ReaderTesting\obj\Debug\ReaderTesting.pdb
+C:\Users\22-411-2-1\Desktop\COE-424 Project\ReaderTesting\ReaderTesting\bin\Debug\ReaderTesting.exe.config
+C:\Users\22-411-2-1\Desktop\COE-424 Project\ReaderTesting\ReaderTesting\obj\Debug\ReaderTesting.exe
+C:\Users\22-411-2-1\Desktop\COE-424 Project\ReaderTesting\ReaderTesting\obj\Debug\ReaderTesting.pdb
+C:\Users\22-411-2-1\Desktop\COE-424 Project\ReaderTesting\ReaderTesting\bin\Debug\ReaderTesting.exe
+C:\Users\22-411-2-1\Desktop\COE-424 Project\ReaderTesting\ReaderTesting\bin\Debug\ReaderTesting.pdb
+C:\Users\22-411-2-1\Desktop\COE-424 Project\ReaderTesting\ReaderTesting\bin\Debug\EntityFramework.dll
+C:\Users\22-411-2-1\Desktop\COE-424 Project\ReaderTesting\ReaderTesting\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\22-411-2-1\Desktop\COE-424 Project\ReaderTesting\ReaderTesting\bin\Debug\EntityFramework.xml
+C:\Users\22-411-2-1\Desktop\COE-424 Project\ReaderTesting\ReaderTesting\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\22-411-2-1\Desktop\COE-424 Project\ReaderTesting\ReaderTesting\obj\Debug\ReaderTesting.csprojResolveAssemblyReference.cache

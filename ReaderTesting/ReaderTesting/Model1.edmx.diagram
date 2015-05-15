@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="34270f4bb7c843ac8069130018d052f8" Name="Diagram1">
+        <EntityTypeShape EntityType="COE424Model.Bus" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="COE424Model.Line" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="COE424Model.Schedule" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="COE424Model.Station" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="COE424Model.Path" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="COE424Model.FK_Bus_Line" ManuallyRouted="false" />
+        <AssociationConnector Association="COE424Model.FK_Schedule_Bus" ManuallyRouted="false" />
+        <AssociationConnector Association="COE424Model.FK_Path_Line" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

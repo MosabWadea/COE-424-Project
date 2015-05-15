@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="COE424ModelStoreContainer" CdmEntityContainer="COE424Entities3">
+    <EntitySetMapping Name="Buses">
+      <EntityTypeMapping TypeName="COE424Model.Bus">
+        <MappingFragment StoreEntitySet="Bus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LineId" ColumnName="LineId" />
+          <ScalarProperty Name="TagId" ColumnName="TagId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lines">
+      <EntityTypeMapping TypeName="COE424Model.Line">
+        <MappingFragment StoreEntitySet="Line">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schedules">
+      <EntityTypeMapping TypeName="COE424Model.Schedule">
+        <MappingFragment StoreEntitySet="Schedule">
+          <ScalarProperty Name="BusId" ColumnName="BusId" />
+          <ScalarProperty Name="CurrentStation" ColumnName="CurrentStation" />
+          <ScalarProperty Name="NextStation" ColumnName="NextStation" />
+          <ScalarProperty Name="ETA" ColumnName="ETA" />
+          <ScalarProperty Name="CheckIn" ColumnName="CheckIn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stations">
+      <EntityTypeMapping TypeName="COE424Model.Station">
+        <MappingFragment StoreEntitySet="Station">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ReaderId" ColumnName="ReaderId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Paths">
+      <EntityTypeMapping TypeName="COE424Model.Path">
+        <MappingFragment StoreEntitySet="Path">
+          <ScalarProperty Name="LineId" ColumnName="LineId" />
+          <ScalarProperty Name="CurrentStation" ColumnName="CurrentStation" />
+          <ScalarProperty Name="NextStation" ColumnName="NextStation" />
+          <ScalarProperty Name="ETA" ColumnName="ETA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

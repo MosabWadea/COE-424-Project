@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="COE424Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Bus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="LineId" Type="int" Nullable="false" />
+    <Property Name="TagId" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Line">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'COE424.dbo.Path' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Path">
+    <Key>
+      <PropertyRef Name="LineId" />
+      <PropertyRef Name="CurrentStation" />
+      <PropertyRef Name="NextStation" />
+      <PropertyRef Name="ETA" />
+    </Key>
+    <Property Name="LineId" Type="int" Nullable="false" />
+    <Property Name="CurrentStation" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NextStation" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ETA" Type="time" Precision="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="BusId" />
+    </Key>
+    <Property Name="BusId" Type="int" Nullable="false" />
+    <Property Name="CurrentStation" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NextStation" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ETA" Type="time" Precision="0" Nullable="false" />
+    <Property Name="CheckIn" Type="time" Precision="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Station">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="ReaderId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Bus_Line">
+    <End Role="Line" Type="Self.Line" Multiplicity="1" />
+    <End Role="Bus" Type="Self.Bus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Line">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bus">
+        <PropertyRef Name="LineId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Path_Line">
+    <End Role="Line" Type="Self.Line" Multiplicity="1" />
+    <End Role="Path" Type="Self.Path" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Line">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Path">
+        <PropertyRef Name="LineId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schedule_Bus">
+    <End Role="Bus" Type="Self.Bus" Multiplicity="1" />
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Bus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schedule">
+        <PropertyRef Name="BusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="COE424ModelStoreContainer">
+    <EntitySet Name="Bus" EntityType="Self.Bus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Line" EntityType="Self.Line" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Station" EntityType="Self.Station" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Path" EntityType="Self.Path" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Path].[LineId] AS [LineId], 
+    [Path].[CurrentStation] AS [CurrentStation], 
+    [Path].[NextStation] AS [NextStation], 
+    [Path].[ETA] AS [ETA]
+    FROM [dbo].[Path] AS [Path]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Bus_Line" Association="Self.FK_Bus_Line">
+      <End Role="Line" EntitySet="Line" />
+      <End Role="Bus" EntitySet="Bus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Path_Line" Association="Self.FK_Path_Line">
+      <End Role="Line" EntitySet="Line" />
+      <End Role="Path" EntitySet="Path" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schedule_Bus" Association="Self.FK_Schedule_Bus">
+      <End Role="Bus" EntitySet="Bus" />
+      <End Role="Schedule" EntitySet="Schedule" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
